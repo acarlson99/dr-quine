@@ -1,4 +1,5 @@
 CC = clang
+CFLAGS = -Wall -Wextra
 COLLEEN_SRC = Colleen.c
 COLLEEN_O = $(COLLEEN_SRC:.c=.o)
 COLLEEN = Colleen
@@ -14,13 +15,13 @@ SULLY = Sully
 GRACE = Grace
 SULLY = Sully
 
-all: $(COLLEEN) # $(GRACE) $(SULLY)
+all: $(COLLEEN) $(GRACE) # $(SULLY)
 
 $(COLLEEN): $(COLLEEN_O)
-	$(CC) $(COLLEEN_O) -o $(COLLEEN)
+	$(CC) $(CFLAGS) $(COLLEEN_O) -o $(COLLEEN)
 
 %.o: %.c
-	$(CC) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(COLLEEN_O) $(GRACE_O) $(SULLY_O)
