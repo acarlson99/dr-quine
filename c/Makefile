@@ -15,10 +15,16 @@ SULLY = Sully
 GRACE = Grace
 SULLY = Sully
 
-all: $(COLLEEN) $(GRACE) # $(SULLY)
+all: $(COLLEEN) $(GRACE) $(SULLY)
 
 $(COLLEEN): $(COLLEEN_O)
 	$(CC) $(CFLAGS) $(COLLEEN_O) -o $(COLLEEN)
+
+$(GRACE): $(GRACE_O)
+	$(CC) $(CFLAGS) $(GRACE_O) -o $(GRACE)
+
+$(SULLY): $(SULLY_O)
+	$(CC) $(CFLAGS) $(SULLY_O) -o $(SULLY)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
