@@ -1,5 +1,6 @@
 CC = clang
 CFLAGS = -Wall -Wextra
+
 COLLEEN_SRC = Colleen.c
 COLLEEN_O = $(COLLEEN_SRC:.c=.o)
 COLLEEN = Colleen
@@ -10,9 +11,6 @@ GRACE = Grace
 
 SULLY_SRC = Sully.c
 SULLY_O = $(SULLY_SRC:.c=.o)
-SULLY = Sully
-
-GRACE = Grace
 SULLY = Sully
 
 all: $(COLLEEN) $(GRACE) $(SULLY)
