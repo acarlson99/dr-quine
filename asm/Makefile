@@ -1,31 +1,31 @@
 NASM = nasm
 NSMFLAGS = -f macho64
-LNK = ld
+CC = gcc
 
-COLLEEN_SRC = Colleen.asm
-COLLEEN_O = $(COLLEEN_SRC:.asm=.o)
+COLLEEN_SRC = Colleen.s
+COLLEEN_O = $(COLLEEN_SRC:.s=.o)
 COLLEEN = Colleen
 
-GRACE_SRC = Grace.asm
-GRACE_O = $(GRACE_SRC:.asm=.o)
+GRACE_SRC = Grace.s
+GRACE_O = $(GRACE_SRC:.s=.o)
 GRACE = Grace
 
-SULLY_SRC = Sully.asm
-SULLY_O = $(SULLY_SRC:.asm=.o)
+SULLY_SRC = Sully.s
+SULLY_O = $(SULLY_SRC:.s=.o)
 SULLY = Sully
 
 all: $(COLLEEN) # $(GRACE) $(SULLY)
 
 $(COLLEEN): $(COLLEEN_O)
-	$(LNK) $(COLLEEN_O) -o $(COLLEEN)
+	$(CC) $(COLLEEN_O) -o $(COLLEEN)
 
 $(GRACE): $(GRACE_O)
-	$(LNK) $(GRACE_O) -o $(GRACE)
+	$(CC) $(GRACE_O) -o $(GRACE)
 
 $(SULLY): $(SULLY_O)
-	$(LNK) $(SULLY_O) -o $(SULLY)
+	$(CC) $(SULLY_O) -o $(SULLY)
 
-%.o: %.asm
+%.o: %.s
 	$(NASM) $(NSMFLAGS) -o $@ $<
 
 clean:
