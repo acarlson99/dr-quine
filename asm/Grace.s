@@ -1,66 +1,51 @@
 %macro A 0
+C
 _main:
 	push rbp
 	mov rbp, rsp
 
 	B
 
-	call _printf
+	call _dprintf
 
-	; mov rax, 0
+	mov rax, 0x20000006
+	mov rdi, r14
+	syscall
+	mov rax, 0
+
+.ret:
 	leave
 	ret
 %endmacro
 %macro B 0
-	lea rdi, [rel fmt]
-	mov rsi, 10
+	mov rax, 0x2000005
+	lea rdi, [rel target]
+	mov rsi, 1537
+	mov rdx, 448
+	clc
+
+	syscall
+	jc .ret
+	cmp rax, 0
+	jle .ret
+
+	mov rdi, rax
+	mov r14, rdi
+	lea rsi, [rel fmt]
 	mov rdx, 10
-	mov rcx, 10
-	mov r8, 10
-	mov r9, 10
-	mov r14, 0
-; .loop:
-; 	push rsi
-; 	; sub rsp, 8
-; 	dec r14
-; 	cmp r14, 0
-; 	jne .loop
-
-	mov r11, 0
-
-	push rsi
-	push rsi
-	push rsi
-	push rsi
-	push rsi
-	push rsi
-	push rsi
-	mov r14, 34
-	push r14
-	lea r13, [rel target]
-	push r13
-	push r14
-	push rsi
-	push r14
-	lea r13, [rel fmt]
-	push r13
-	push r14
-	push rsi
-	push rsi
-	; push rsi
-	; push r14
-	; sub rsp, 8
+	lea rcx, [rel target]
+	lea r8, [rel fmt]
+	mov r9, 34
 %endmacro
 %macro C 0
-%endmacro
-
 section .data
-fmt: db "%c%c%c%c%csection .data%c%cfmt: db %c%s%c,0%ctarget: db %c%s%c,0%csection .text%cglobal _main%cextern _printf%c%c; One explainy boi%c%cA",0
+fmt: db "%%macro A 0%1$cC%1$c_main:%1$c	push rbp%1$c	mov rbp, rsp%1$c%1$c	B%1$c%1$c	call _dprintf%1$c%1$c	mov rax, 0x20000006%1$c	mov rdi, r14%1$c	syscall%1$c	mov rax, 0%1$c%1$c.ret:%1$c	leave%1$c	ret%1$c%%endmacro%1$c%%macro B 0%1$c	mov rax, 0x2000005%1$c	lea rdi, [rel target]%1$c	mov rsi, 1537%1$c	mov rdx, 448%1$c	clc%1$c%1$c	syscall%1$c	jc .ret%1$c	cmp rax, 0%1$c	jle .ret%1$c%1$c	mov rdi, rax%1$c	mov r14, rdi%1$c	lea rsi, [rel fmt]%1$c	mov rdx, 10%1$c	lea rcx, [rel target]%1$c	lea r8, [rel fmt]%1$c	mov r9, 34%1$c%%endmacro%1$c%%%macro C 0%1$csection .data%1$cfmt: db %4$c%3$s%4$c,0%1$ctarget: db %4$c%2$s%4$c,0%1$c%1$csection .text%1$cglobal _main%1$cextern _dprintf%1$c%%endmacro%1$c%1$c; One explainy boi%1$c%1$cA%1$c",0
 target: db "Grace_kid.s",0
 
 section .text
 global _main
-extern _printf
+extern _dprintf
+%endmacro
 
 ; One explainy boi
 
