@@ -14,7 +14,7 @@ SULLY_SRC = Sully.s
 SULLY_O = $(SULLY_SRC:.s=.o)
 SULLY = Sully
 
-all: $(COLLEEN) # $(GRACE) $(SULLY)
+all: $(COLLEEN) $(GRACE) # $(SULLY)
 
 $(COLLEEN): $(COLLEEN_O)
 	$(CC) $(COLLEEN_O) -o $(COLLEEN)
