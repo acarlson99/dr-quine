@@ -4,7 +4,7 @@ COLLEEN = Colleen
 GRACE = Grace
 SULLY = Sully
 
-all: $(COLLEEN)
+all: $(COLLEEN) $(GRACE)
 
 %: %.go
 	$(GOBUILD) $<
