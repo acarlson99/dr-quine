@@ -26,6 +26,8 @@ _main:
 ; 	cmp r14, 0
 ; 	jne .loop
 
+	mov r11, 0
+
 	push rsi
 	push rsi
 	push rsi
@@ -35,12 +37,12 @@ _main:
 	push rsi
 	mov r14, 34
 	push r14
-	mov r13, [rel target]
+	lea r13, [rel target]
 	push r13
 	push r14
 	push rsi
 	push r14
-	mov r13, [rel fmt]
+	lea r13, [rel fmt]
 	push r13
 	push r14
 	push rsi
@@ -53,7 +55,7 @@ _main:
 %endmacro
 
 section .data
-fmt: db "%c%c%c%c%csection .data%c%cfmt: db %c%s%c,0%ctarget: db %c%s%c,0%csection .text%cglobal _main%cextern _printf%c%c; One explainy boi%c%cA%c",0
+fmt: db "%c%c%c%c%csection .data%c%cfmt: db %c%s%c,0%ctarget: db %c%s%c,0%csection .text%cglobal _main%cextern _printf%c%c; One explainy boi%c%cA",0
 target: db "Grace_kid.s",0
 
 section .text
