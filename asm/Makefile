@@ -35,3 +35,10 @@ fclean: clean
 	rm -f $(COLLEEN) $(GRACE) $(SULLY)
 
 re: fclean all
+
+k: fclean
+	rm -f *.out
+	rm -rf *.dSYM
+	rm -f *.o
+	rm -f Grace_kid.s
+	rm -f Sully_*.s
