@@ -8,8 +8,8 @@ int main() {
 		return (1);
 	char *f;
 	asprintf(&f, FILENAME, i-1);
-	int fd = open(f, O_CREAT|O_WRONLY, S_IRWXU);
-	char *s = "#include <stdio.h>%c#include <fcntl.h>%c#include <unistd.h>%c#define FILENAME %c%s%c%cint main() {%c	int i = %d; %c	if (i <= 0)%c		return (1);%c	char *f;%c	asprintf(&f, FILENAME, i-1);%c	int fd = open(f, O_CREAT|O_WRONLY, S_IRWXU);%c	char *s = %c%s%c;%c	dprintf(fd, s, 10, 10, 10, 34, FILENAME, 34, 10, 10, i-1, 10, 10, 10, 10, 10, 10, 34, s, 34, 10, 10, 10, 10);%c	close(fd);%c}%c";
-	dprintf(fd, s, 10, 10, 10, 34, FILENAME, 34, 10, 10, i-1, 10, 10, 10, 10, 10, 10, 34, s, 34, 10, 10, 10, 10);
+	int fd = open(f, O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
+	char *s = "#include <stdio.h>%1$c#include <fcntl.h>%1$c#include <unistd.h>%1$c#define FILENAME %2$c%4$s%2$c%1$cint main() {%1$c	int i = %3$d; %1$c	if (i <= 0)%1$c		return (1);%1$c	char *f;%1$c	asprintf(&f, FILENAME, i-1);%1$c	int fd = open(f, O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);%1$c	char *s = %2$c%5$s%2$c;%1$c	dprintf(fd, s, 10, 34, i-1, FILENAME, s);%1$c	close(fd);%1$c}%1$c";
+	dprintf(fd, s, 10, 34, i-1, FILENAME, s);
 	close(fd);
 }

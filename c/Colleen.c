@@ -5,12 +5,12 @@
 */
 
 char	*other(void) {
-	return ("#include <stdio.h>%c%c/*%c  One comment%c*/%c%cchar	*other(void) {%c%creturn (%c%s%c);%c}%c%cint		main(void) {%c/*%c  Two comment%c*/%c	printf(other(), 10, 10, 10, 10, 10, 10, 10, 9, 34, other(), 34, 10, 10, 10, 10, 10, 10, 10, 10, 10);%c}%c");
+	return ("#include <stdio.h>%1$c%1$c/*%1$c  One comment%1$c*/%1$c%1$cchar	*other(void) {%1$c	return (%3$c%2$s%3$c);%1$c}%1$c%1$cint		main(void) {%1$c/*%1$c  Two comment%1$c*/%1$c	printf(other(), 10, other(), 34);%1$c}%1$c");
 }
 
 int		main(void) {
 /*
   Two comment
 */
-	printf(other(), 10, 10, 10, 10, 10, 10, 10, 9, 34, other(), 34, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+	printf(other(), 10, other(), 34);
 }
