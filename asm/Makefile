@@ -2,16 +2,13 @@ NASM = nasm
 NSMFLAGS = -f macho64
 CC = gcc
 
-COLLEEN_SRC = Colleen.s
-COLLEEN_O = $(COLLEEN_SRC:.s=.o)
+COLLEEN_O = Colleen.o
 COLLEEN = Colleen
 
-GRACE_SRC = Grace.s
-GRACE_O = $(GRACE_SRC:.s=.o)
+GRACE_O = Grace.o
 GRACE = Grace
 
-SULLY_SRC = Sully.s
-SULLY_O = $(SULLY_SRC:.s=.o)
+SULLY_O = Sully.o
 SULLY = Sully
 
 all: $(COLLEEN) $(GRACE) $(SULLY)
