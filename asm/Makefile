@@ -1,6 +1,5 @@
-NASM = nasm
-NSMFLAGS = -f macho64
-CC = gcc
+AS = nasm
+ASFLAGS = -f macho64
 
 COLLEEN_O = Colleen.o
 COLLEEN = Colleen
@@ -14,16 +13,8 @@ SULLY = Sully
 all: $(COLLEEN) $(GRACE) $(SULLY)
 
 $(COLLEEN): $(COLLEEN_O)
-	$(CC) $(COLLEEN_O) -o $(COLLEEN)
-
 $(GRACE): $(GRACE_O)
-	$(CC) $(GRACE_O) -o $(GRACE)
-
 $(SULLY): $(SULLY_O)
-	$(CC) $(SULLY_O) -o $(SULLY)
-
-%.o: %.s
-	$(NASM) $(NSMFLAGS) -o $@ $<
 
 clean:
 	rm -f $(COLLEEN_O) $(GRACE_O) $(SULLY_O)
