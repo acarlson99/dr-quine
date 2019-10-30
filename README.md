@@ -26,3 +26,5 @@ Prints source to `Sully_X.s` only if X > 0
 ./Sully
 diff Sully.s Sully_4.s
 ```
+
+![example](./resources/example.png)
