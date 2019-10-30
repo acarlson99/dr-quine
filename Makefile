@@ -31,9 +31,11 @@ asm_: $(ASM_OBJ) $(ASM_EXEC)
 	$(GOBUILD) -o $@ $<
 
 clean:
-	rm -f $(ASM_OBJ)
+	$(RM) $(ASM_OBJ)
 
 fclean: clean
-	rm -f $(C_EXEC) $(ASM_EXEC) $(GO_EXEC)
+	 $(RM) $(C_EXEC) $(ASM_EXEC) $(GO_EXEC)
+	find . -type f -name 'Sully_[0-4].*' -exec rm {} ';'
+	find . -type f -name '*Grace_kid.*' -exec rm {} ';'
 
 re: fclean all
