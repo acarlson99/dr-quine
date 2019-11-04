@@ -23,9 +23,16 @@ C_DIR = c/
 GO_EXEC = $(addprefix $(GO_DIR), $(EXECS))
 GO_DIR = golang/
 
-all: $(C_EXEC) asm_ $(GO_EXEC)
+all: $(C_DIR) $(ASM_DIR) $(GO_DIR)
 
-asm_: $(ASM_OBJ) $(ASM_EXEC)
+.PHONY: $(C_DIR)
+$(C_DIR): $(C_EXEC)
+
+.PHONY: $(ASM_DIR)
+$(ASM_DIR): $(ASM_OBJ) $(ASM_EXEC)
+
+.PHONY: $(GO_DIR)
+$(GO_DIR): $(GO_EXEC)
 
 %: %.go
 	$(GOBUILD) -o $@ $<
