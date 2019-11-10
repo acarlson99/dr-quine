@@ -1,5 +1,9 @@
 # Dr. Quine
 
+Introduction to [kleene's algorithm](https://en.wikipedia.org/wiki/Kleene%27s_algorithm) by creating [quines](https://en.wikipedia.org/wiki/Quine_(computing)) with certain requirements
+
+See [pdf](./resources/dr_quine.en.pdf) for details
+
 ## Colleen
 
 Simple quine.  Prints source to stdout
